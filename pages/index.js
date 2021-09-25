@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className={counter >= 5 ? "page bg-red-400" : "page bg-green-100"}>
       <Head>
-        <title>Create Next App</title>
+        <title>Resevervation Ui -@omar.code</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
@@ -104,6 +104,22 @@ export default function Home() {
           </div>
         </section>
       </section>
+      <footer className='text-xs flex flex-col space-y-2 items-center justify-center mt-24 '>
+        <p>
+          Inspired by{" "}
+          <a
+            className='font-bold'
+            href='https://www.instagram.com/mauricio.bucardo/'>
+            @mauricio.bucardo
+          </a>
+        </p>
+        <p>
+          Created by
+          <a className='font-bold' href='https://www.instagram.com/omar.code/'>
+            @omar.code
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
