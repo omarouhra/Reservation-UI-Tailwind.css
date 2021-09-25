@@ -11,7 +11,6 @@ import person1 from "../images/person1.png";
 import person2 from "../images/person2.png";
 import person3 from "../images/person3.png";
 import person4 from "../images/person4.png";
-import Card from "../components/card";
 
 export default function Home() {
   const [counter, setCounter] = useState(1);
