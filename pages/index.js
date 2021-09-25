@@ -1,82 +1,110 @@
-import Head from 'next/head'
+import Head from "next/head";
+import {
+  BanIcon,
+  BeakerIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/solid";
+import { useState } from "react";
+import Image from "next/image";
+import person1 from "../images/person1.png";
+import person2 from "../images/person2.png";
+import person3 from "../images/person3.png";
+import person4 from "../images/person4.png";
+import Card from "../components/card";
 
 export default function Home() {
+  const [counter, setCounter] = useState(1);
+
+  const addResevration = () => {
+    setCounter(counter + 1);
+  };
+  const removeResevration = () => {
+    setCounter(counter - 1);
+  };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className={counter >= 5 ? "page bg-red-400" : "page bg-green-100"}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
+      <div
+        className={
+          counter >= 5 ? "covid  opacity-100" : "covid translate-y-2 opacity-0 "
+        }>
+        <BanIcon width={80} className='text-red-500' />
+        <p className='text-xl'>
+          {" "}
+          Due to <span className='font-semibold'>COVID-19</span> only groups of{" "}
+          <span className='font-semibold'>4</span> are allowed.{" "}
         </p>
+      </div>
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+      <section
+        className={
+          counter < 5 ? "card bg-green-200" : " card bg-red-100 translate-y-4"
+        }>
+        <section className='flex items-center justify-center flex-1  transition duration-500'>
+          <section
+            className={
+              counter === 1
+                ? "table"
+                : counter === 2
+                ? "table -rotate-90"
+                : counter === 3
+                ? "table -rotate-180"
+                : counter === 4
+                ? "table -rotate-180"
+                : counter === 5
+                ? "table -rotate-180"
+                : "null"
+            }>
+            <div className='person -top-6 right-4'>
+              <Image src={person1} width={50} height={50} objectFit='contain' />
+            </div>
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+            <div
+              className={counter >= 2 ? "person  top-4 -right-6" : " hidden"}>
+              <Image src={person2} width={50} height={50} objectFit='contain' />
+            </div>
+            <div
+              className={counter >= 3 ? "person  right-4 -bottom-6" : "hidden"}>
+              <Image src={person3} width={50} height={50} objectFit='contain' />
+            </div>
+            <div
+              className={
+                counter >= 4
+                  ? "person  top-4 -left-6"
+                  : " opacity-0 -translate-x-full"
+              }>
+              <Image src={person4} width={50} height={50} objectFit='contain' />
+            </div>
+          </section>
+        </section>
+        <section className='flex items-center justify-between bg-white  rounded-b-xl py-6 px-4'>
+          <div className='text-lg font-semibold'>For how many people !</div>
+          <div className='flex items-center space-x-4 overflow-hidden'>
+            <ChevronLeftIcon
+              className={
+                counter > 1
+                  ? "w-6 cursor-pointer  bg-gray-200 rounded-full translate-y-0 transition duration-500"
+                  : " w-6 cursor-pointer  bg-gray-200 rounded-full translate-y-[30px] duration-500"
+              }
+              onClick={removeResevration}
+            />
+            <p className='text-2xl font-semibold'>{counter}</p>
+            <ChevronRightIcon
+              className={
+                counter < 5
+                  ? "w-6 cursor-pointer  bg-gray-200 rounded-full translate-y-0 transition duration-500"
+                  : " w-6 cursor-pointer  bg-gray-200 rounded-full translate-y-[30px] duration-500"
+              }
+              onClick={addResevration}
+            />
+          </div>
+        </section>
+      </section>
     </div>
-  )
+  );
 }

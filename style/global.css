@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .person {
+    @apply absolute opacity-100 transition duration-500;
+  }
+  .table {
+    @apply relative w-20 h-20 rounded-full shadow-2xl  bg-white transition duration-500;
+  }
+  .card {
+    @apply w-[400px] h-[300px]   shadow-2xl rounded-xl flex flex-col z-50  transition duration-500;
+  }
+  .covid {
+    @apply w-[400px] h-[80px] px-8 bg-red-100 shadow-xl z-0  flex flex-row  items-center space-x-4 rounded-lg transition duration-500 animate-bounce;
+  }
+  .page {
+    @apply flex flex-col items-center justify-center min-h-screen py-2 transition duration-500;
+  }
+}
